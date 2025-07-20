@@ -24,7 +24,8 @@ To update your machine learning model, add your `load` and `method` [change here
 python -m venv venv
 #source venv/bin/activate
 venv\Scripts\activate # Windows
-make install
+# make install
+make install_win
 ```
 
 ## Runnning Localhost

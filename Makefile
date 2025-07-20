@@ -28,7 +28,10 @@ test: install
 	uv run pytest tests -vv --show-capture=all
 
 install: generate_dot_env venv
-# 	pip install uv --break-system-packages
+	pip install uv --break-system-packages
+	uv pip install -e ".[dev]"
+
+install_win: generate_dot_env_win venv
 	pip install uv
 	uv pip install -e ".[dev]"
 
@@ -43,9 +46,11 @@ down:
 	docker-compose down
 
 generate_dot_env:
-# 	@if [[ ! -e .env ]]; then \
-# 		cp .env.example .env; \
-# 	fi
+	@if [[ ! -e .env ]]; then \
+		cp .env.example .env; \
+	fi
+
+generate_dot_env_win:
 	@if not exist .env (copy .env.example .env)
 
 clean:
