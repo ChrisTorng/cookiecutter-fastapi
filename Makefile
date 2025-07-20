@@ -21,14 +21,16 @@ endif
 
 all: clean test install run deploy down
 
-venv:
+uv:
+	pip install uv --break-system-packages
+
+venv: uv
 	uv venv .venv
 
 test: install
 	uv run pytest tests -vv --show-capture=all
 
 install: generate_dot_env venv
-	pip install uv --break-system-packages
 	uv pip install -e ".[dev]"
 
 install_win: generate_dot_env_win venv
