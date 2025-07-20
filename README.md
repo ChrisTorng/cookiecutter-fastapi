@@ -10,8 +10,8 @@ Pratice of cookiecutter-fastapi template project.
 ### M.L Model Environment
 
 ```sh
-MODEL_PATH=./ml/model/
-MODEL_NAME=model.pkl
+set MODEL_PATH=./ml/model/
+set MODEL_NAME=model.pkl
 ```
 
 ### Update `/predict`
@@ -22,7 +22,8 @@ To update your machine learning model, add your `load` and `method` [change here
 
 ```sh
 python -m venv venv
-source venv/bin/activate
+#source venv/bin/activate
+venv\Scripts\activate # Windows
 make install
 ```
 
@@ -37,6 +38,7 @@ make install
 ## Running Tests
 
 `make test`
+`pytest`
 
 ## Access Swagger Documentation
 

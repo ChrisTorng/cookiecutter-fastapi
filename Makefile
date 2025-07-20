@@ -28,11 +28,12 @@ test: install
 	uv run pytest tests -vv --show-capture=all
 
 install: generate_dot_env venv
-	pip install uv --break-system-packages
+# 	pip install uv --break-system-packages
+	pip install uv
 	uv pip install -e ".[dev]"
 
 run: venv
-	PYTHONPATH=app/ uv run uvicorn main:app --reload --host 0.0.0.0 --port 8080
+	cd app && uv run uvicorn main:app --reload --host 0.0.0.0 --port 8080
 
 deploy: generate_dot_env
 	docker-compose build
@@ -42,9 +43,10 @@ down:
 	docker-compose down
 
 generate_dot_env:
-	@if [[ ! -e .env ]]; then \
-		cp .env.example .env; \
-	fi
+# 	@if [[ ! -e .env ]]; then \
+# 		cp .env.example .env; \
+# 	fi
+	@if not exist .env (copy .env.example .env)
 
 clean:
 	@find . -name '*.pyc' -exec rm -rf {} \;
