@@ -2,6 +2,15 @@
 
 Pratice of cookiecutter-fastapi template project.
 
+## My experience
+
+```
+pip install cookiecutter
+cookiecutter gh:arthurhenrique/cookiecutter-fastapi
+```
+
+Machine learning related running is failed. And this template is too complex.
+
 ## Development Requirements
 
 - Python 3.11+
